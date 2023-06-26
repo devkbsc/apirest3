@@ -1,0 +1,73 @@
+{% extends 'PetkoparaCrudGeneratorBundle/base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- post
+{% endblock %}
+
+{% block body %}
+
+	<div id="top" class="row">
+		<div class="page-header">
+			<h2>View post
+				<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+			</h2>
+		</div>
+
+        <h3>
+            {% for info in user %}
+                Posted by {{ info.name }}
+            {% endfor %}
+        </h3>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<p>
+				<strong>Title</strong>
+			</p>
+			<p>
+				{{ post.title }}
+			</p>
+
+		</div>
+		<div class="col-md-6">
+			<p>
+				<strong>Body</strong>
+			</p>
+			<p>
+				{{ post.body }}
+			</p>
+
+		</div>
+	</div>
+
+	<hr/>
+
+	<div class="container">
+		<h3 class="text-center text-uppercase">The comments of the Post</h3>
+		<div class="row text-uppercase text-center">
+			<div class="col-md-4">Name</div>
+			<div class="col-md-4">Email</div>
+			<div class="col-md-4">Body</div>
+		</div>
+		{% for comment in comments %}
+			<div class="row">
+				<div class="col-md-4">{{ comment.name }}</div>
+				<div class="col-md-4 text-center">{{ comment.email }}</div>
+				<div class="col-md-4">{{ comment.body }}</div>
+			</div>
+            <hr/>
+		{% endfor %}
+	</div>
+
+
+	<div class="form-group">
+		<a class="btn btn-default" href="{{ path('post') }}">
+			<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+			Back to list
+		</a>
+	</div>
+
+
+{% endblock %}
